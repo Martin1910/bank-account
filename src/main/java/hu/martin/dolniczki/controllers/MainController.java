@@ -1,16 +1,16 @@
 package hu.martin.dolniczki.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import hu.martin.dolniczki.entity.BankAccountEntity;
 import hu.martin.dolniczki.service.BankAccountService;
 
-@RestController
+@Controller
 public class MainController {
 
 	private BankAccountService bankAccountService;
@@ -21,13 +21,21 @@ public class MainController {
 		this.bankAccountService = bankAccountService;
 	}
 	
-	@GetMapping(path="/listBankAccounts", produces=MediaType.APPLICATION_JSON_VALUE)
-	Iterable<BankAccountEntity> listBankAccounts(){
-		return bankAccountService.listAll_BankAccount();
+	@GetMapping("/form")
+	public String bankAccountsForm(Model model) {
+		model.addAttribute("bankAccount", new BankAccountEntity());
+		return "index";
 	}
 	
-	@PostMapping(path="/newBankAccount", consumes=MediaType.APPLICATION_JSON_VALUE)
-	void createNewBankAccount(@RequestBody BankAccountEntity newBankAccount) {
-		bankAccountService.createNew_BankAccount(newBankAccount);
+	@GetMapping("/allBankAccounts")
+	public String listBankAccounts(Model model) {
+		model.addAttribute("allBankAccount", bankAccountService.listAll_BankAccount());
+		return "allbankaccount";
+	}
+	
+	@PostMapping("/form")
+	public String bankAccountsSubmit(@ModelAttribute BankAccountEntity bankAccount) {
+		bankAccountService.createNew_BankAccount(bankAccount);
+		return "bankaccounts";
 	}
 }

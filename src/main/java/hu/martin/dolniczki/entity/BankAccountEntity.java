@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
-
 @Entity
 public class BankAccountEntity {
 	@Id
@@ -14,7 +12,7 @@ public class BankAccountEntity {
 	private long id;
 	private String bankAccount;
 	private String surname;
-	private String forname;
+	private String forename;
 
 	public long getId() {
 		return id;
@@ -40,12 +38,12 @@ public class BankAccountEntity {
 		this.surname = surname;
 	}
 
-	public String getForname() {
-		return forname;
+	public String getForename() {
+		return forename;
 	}
 
-	public void setForname(String forname) {
-		this.forname = forname;
+	public void setForename(String forename) {
+		this.forename = forename;
 	}
 
 }

@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+	<tr th:each="bankAccount : ${allBankAccount}">
+       Bank Account number: <td th:text="${bankAccount.bankAccount}"></td>
+       Full Name: <td th:text="${bankAccount.surname}"/>
+       <td th:text="${bankAccount.forename}"/><br/>
+    </tr>
+</body>
+</html>
