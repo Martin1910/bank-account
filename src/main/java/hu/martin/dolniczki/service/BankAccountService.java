@@ -7,5 +7,8 @@ import hu.martin.dolniczki.entity.BankAccountEntity;
 @Service
 public interface BankAccountService {
 	Iterable<BankAccountEntity> listAll_BankAccount();
-	void createNew_BankAccount(BankAccountEntity bankAccount);
+	boolean createNew_BankAccount(BankAccountEntity bankAccount);
+	void updateBankAccount(Long id);
+	void deleteBankAccount(String bankAccountNo);
+	void deleteAllBankAccounts();
 }

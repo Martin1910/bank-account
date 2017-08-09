@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Bank Account</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css"/>
+</head>
+<body>
+	<div class="header">
+		<a href="/">Home</a>
+		<a href="/allBankAccounts">Bank Accounts</a>
+	</div>
+	<div class="content">
+		<h1>New Bank Account Added!</h1>
+		<table>
+			<tr>
+				<th>Bank Account Number</th>
+				<td th:text="${bankAccountEntity.bankAccount}"></td>
+			</tr>
+			<tr>
+				<th>Surname:</th>
+				<td th:text="${bankAccountEntity.surname}"></td>
+			</tr>
+			<tr>
+				<th>Forename:</th>
+				<td th:text="${bankAccountEntity.forename}"></td>
+			</tr>
+		</table>
+    </div>
+    
+</body>
+</html>

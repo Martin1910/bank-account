@@ -24,8 +24,43 @@ public class BankAccountServiceImp implements BankAccountService {
 	}
 
 	@Override
-	public void createNew_BankAccount(BankAccountEntity bankAccount) {
-		bankAccountRepository.save(bankAccount);
+	public boolean createNew_BankAccount(BankAccountEntity bankAccount) {
+		Iterable<BankAccountEntity> bankAccounts = bankAccountRepository.findAll();
+		
+		if (bankAccounts == null) {
+			bankAccountRepository.save(bankAccount);
+			return true;
+		}
+		else {
+			for (BankAccountEntity bankAccountEntity : bankAccounts) {
+				if (bankAccountEntity.getBankAccount().equals(bankAccount.getBankAccount())) {
+					return false;
+				}
+			}
+			bankAccountRepository.save(bankAccount);
+			return true;
+		}
+		
 	}
-
+	
+	@Override
+	public void updateBankAccount(Long id) {
+		bankAccountRepository.findOne(id);
+	}
+	
+	@Override
+	public void deleteBankAccount(String bankAccountNo) {
+		Iterable<BankAccountEntity> bankAccounts = bankAccountRepository.findAll();
+		for (BankAccountEntity bankAccountEntity : bankAccounts) {
+			if (bankAccountEntity.getBankAccount().equals(bankAccountNo)) {
+				bankAccountRepository.delete(bankAccountEntity);
+			}
+		}
+	}
+	
+	@Override
+	public void deleteAllBankAccounts() {
+		bankAccountRepository.deleteAll();
+	}
+	
 }

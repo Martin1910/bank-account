@@ -1,14 +1,34 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>All Bank Account</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/allbankaccounts.js"></script>
 </head>
 <body>
-	<tr th:each="bankAccount : ${allBankAccount}">
-       Bank Account number: <td th:text="${bankAccount.bankAccount}"></td>
-       Full Name: <td th:text="${bankAccount.surname}"/>
-       <td th:text="${bankAccount.forename}"/><br/>
-    </tr>
+	<div class="header">
+		<a href="/">Home</a>
+		<a href="/allBankAccounts" id="active">Bank Accounts</a>
+	</div>
+	<div class="content">
+		<table>
+			<tr>
+				<th>Bank Account Number</th>
+				<th>Surname</th>
+				<th>Forename</th>
+				<th></th>
+			</tr>
+			<tr th:each="bankAccount : ${allBankAccount}">
+        		<td th:text="${bankAccount.bankAccount}"/>
+        		<td th:text="${bankAccount.surname}"/>
+       			<td th:text="${bankAccount.forename}"/>
+       			<td><button>Delete</button></td>
+    		</tr>
+		</table>
+	</div>
+	
 </body>
 </html>

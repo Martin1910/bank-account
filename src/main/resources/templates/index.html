@@ -4,19 +4,32 @@
 		<meta charset="UTF-8"/>
 		<title>Home</title>
 		<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+		<script src="/js/jquery-3.2.1.min.js"></script>
+		<script src="/js/formchecker.js"></script>
+		<script src="/js/jquery.validate.min.js"></script>
 	</head>
 	
 	<body>
 		<div class="header">
-			<a href="#home">Home</a>
-			<a href="/listBankAccounts">Bank Accounts</a>
+			<a href="/" id="active">Home</a>
+			<a href="/allBankAccounts">Bank Accounts</a>
 		</div>
 		<div class="content">
-			<form action="#" th:action="@{/form}" th:object="${bankAccount}" method="post">
-				
-				<p>Bank Account number: <input type="text" th:field="*{bankAccount}"/></p>
-				<p>Surname: <input type="text" th:field="*{surname}"/></p>
-				<p>Forename: <input type="text" th:field="*{forename}"/></p>
+			<form action="#" th:action="@{/newAccount}" th:object="${bankAccount}" name="bankAccountForm" method="post">
+				<table>
+					<tr>
+						<td>Bank Account number</td>
+						<td><input type="text" th:field="*{bankAccount}"/></td>
+					</tr>
+					<tr>
+						<td>Surname</td>
+						<td><input type="text" th:field="*{surname}"/></td>
+					</tr>
+					<tr>
+						<td>Forename</td>
+						<td><input type="text" th:field="*{forename}"/></td>
+					</tr>
+				</table>
 				<input type="submit" value="Submit"/>
 			</form>
 		</div>

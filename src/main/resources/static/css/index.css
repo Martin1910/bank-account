@@ -17,14 +17,22 @@ body{
 }
 
 .content{
-	
+	padding: 8px 15px;
 }
 
 a{
 	text-decoration: none;
-	color: red;
+	color: #000000;
 }
 
 a:hover{
-	background-color: yellow;
+	background-color: #2badbc;
+}
+
+#active{
+	background-color: #79dae5;	
+}
+
+label.error{
+	color: #ff0000;
 }
